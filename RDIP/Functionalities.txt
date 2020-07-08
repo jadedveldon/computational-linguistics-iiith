@@ -1,0 +1,18 @@
+The top Header band "COMPUTATIONAL LINGUISTICS LAB" is clickable and leads to computational-linguistics-iiith\src\lab
+
+The next band contains the path which shows the current location and is clickable 
+1. Forming senrences - 2 leads to current page
+2. Computational linguistics lap leads to the same page as above
+3. home leads to the same as computational linguistics lab
+
+on going to experiment you get the dropdown "--Select Language--"
+options are 1. English 
+	    2. Hindi
+there are then 10 buttons with different buttons each holding a word 
+the "Re-form the sentence" acts as the reset button.
+On selecting the buttons in an order that make sense the button
+"Check the correctness of this sentance appears"
+then on clicking the above button the sentance is then compared with any one of the 8 possible answers
+If the answer matches then "Right answer!!!" appears in green else "Wrong answers!!!" appears
+Then show answers button appears which displays the 8 right answers and in its place the hide the correct answer button appears
+On clicking the above button the answers disappear.	
