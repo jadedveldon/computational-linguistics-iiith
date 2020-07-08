@@ -19,4 +19,14 @@ var sentanceHindi = [
     ['एक', 'लाल', 'किताब', 'वहाँ', 'है'],
     ['एक', 'बड़ी', 'सी', 'किताब', 'वहाँ', 'है']
 ];
-document.getElementById("demo").innerHTML = sentanceEnglish[3][2];
+function selectOptions() {
+    var selection = document.getElementById("select").value;
+    var text = "";
+    if (selection == 'null') {
+        alert("Select language");
+    }
+    else {
+        text = "Form a sentence (Declarative or Interrogative or any other type) from the given words<br>(select the buttons in proper order)";
+    }
+    document.getElementById("message").innerHTML = text;
+}
