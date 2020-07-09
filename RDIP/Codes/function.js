@@ -22,11 +22,42 @@ var sentanceHindi = [
 function selectOptions() {
     var selection = document.getElementById("select").value;
     var text = "";
-    if (selection == 'null') {
-        alert("Select language");
+    if(selection == 'english' ){
+        text = "Form a sentence (Declarative or Interrogative or any other type) from the given words<br>(select the buttons in proper order)";
+        randomEnglish();
+    }
+    else if (selection == 'hindi' ){
+        text = "Form a sentence (Declarative or Interrogative or any other type) from the given words<br>(select the buttons in proper order)";
+        randomHindi();
     }
     else {
-        text = "Form a sentence (Declarative or Interrogative or any other type) from the given words<br>(select the buttons in proper order)";
+        alert("Select language");
     }
     document.getElementById("message").innerHTML = text;
+}
+function randomEnglish() {
+    var sentance = sentanceEnglish[Math.floor(Math.random() * sentanceEnglish.length)];
+    var randomize = randomizeWords(sentance);
+    for (var i = 0; i < randomize.length; i++) {
+        document.getElementById("randomButtons").innerHTML += "<button class='sentanceButtons'>" + randomize[i] + "</button>";
+    }
+}
+function randomHindi() {
+    var sentance = sentanceHindi[Math.floor(Math.random() * sentanceHindi.length)];
+    var randomize = randomizeWords(sentance);
+    for (var i = 0; i < randomize.length; i++) {
+        document.getElementById("randomButtons").innerHTML += "<button class='sentanceButtons'>" + randomize[i] + "</button>";
+    }
+}
+function randomizeWords(innerArray) {
+    var length = innerArray.length;
+    var temp, index;
+    while (length > 0) {
+        index = Math.floor(Math.random() * length);
+        length--;
+        temp = innerArray[length];
+        innerArray[length] = innerArray[index];
+        innerArray[index] = temp;
+    }
+    return innerArray;
 }

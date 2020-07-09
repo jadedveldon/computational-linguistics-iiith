@@ -8,3 +8,7 @@ option{
 #wrap{
     text-align:center;
 }
+.sentanceButtons {
+    margin-right: 10px;
+    margin-left: 10px;
+}
