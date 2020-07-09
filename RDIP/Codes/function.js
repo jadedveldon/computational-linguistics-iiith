@@ -20,7 +20,9 @@ var sentanceHindi = [
     ['एक', 'बड़ी', 'सी', 'किताब', 'वहाँ', 'है']
 ];
 document.getElementById("reformSentance").style.visibility = "hidden";
+document.getElementById("formedSentance").style.visibility = "hidden";
 var inputArray;
+var randomize;
 function selectOptions() {
     var selection = document.getElementById("select").value;
     var text = "";
@@ -39,7 +41,7 @@ function selectOptions() {
 }
 function randomEnglish() {
     var sentance = sentanceEnglish[Math.floor(Math.random() * sentanceEnglish.length)];
-    var randomize = randomizeWords(sentance);
+    randomize = randomizeWords(sentance);
     for (var i = 0; i < randomize.length; i++) {
         document.getElementById("randomButtons").innerHTML += "<button class='sentanceButtons' id= '" + i + "' onclick='clicker("+i+")'>" + randomize[i] + "</button>";
     inputArray="";
@@ -47,7 +49,7 @@ function randomEnglish() {
 }
 function randomHindi() {
     var sentance = sentanceHindi[Math.floor(Math.random() * sentanceHindi.length)];
-    var randomize = randomizeWords(sentance);
+    randomize = randomizeWords(sentance);
     for (var i = 0; i < randomize.length; i++) {
         document.getElementById("randomButtons").innerHTML += "<button class='sentanceButtons' id= '" + i + "' onclick='clicker(" + i + ")'>" + randomize[i] + "</button>";
         inputArray = "";
@@ -66,10 +68,20 @@ function randomizeWords(innerArray) {
     return innerArray;
 }
 function clicker(i) {
-    document.getElementById("formedSentance").innerHTML = "Formed Sentence (after selecting words):";
+    document.getElementById("formedSentance").style.visibility = "visible";
     document.getElementById("reformSentance").style.visibility = "visible";
     var buttonID = document.getElementById(i);
     buttonID.style.display = "none";
     inputArray += buttonID.textContent+" ";
     document.getElementById("inputSentance").innerHTML = inputArray;
+}
+function reform() {
+    document.getElementById("reformSentance").style.visibility = "hidden";
+    document.getElementById("formedSentance").style.visibility = "hidden";
+    inputArray = "";
+    document.getElementById("inputSentance").innerHTML = inputArray;
+    document.getElementById("randomButtons").innerHTML = "";
+    for (var i = 0; i < randomize.length; i++) {
+        document.getElementById("randomButtons").innerHTML += "<button class='sentanceButtons' id= '" + i + "' onclick='clicker(" + i + ")'>" + randomize[i] + "</button>";
+    }
 }
