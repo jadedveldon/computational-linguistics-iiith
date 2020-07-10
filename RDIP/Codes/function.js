@@ -104,6 +104,9 @@ var h78 = [sentanceHindi[6][5], sentanceHindi[6][4], sentanceHindi[6][1], sentan
 document.getElementById("reformSentance").style.visibility = "hidden";
 document.getElementById("formedSentance").style.visibility = "hidden";
 document.getElementById("checkButton").style.visibility = "hidden";
+document.getElementById("rightAnswer").style.visibility = "hidden";
+document.getElementById("wrongAnswer").style.visibility = "hidden";
+document.getElementById("getSentButton").style.visibility = "hidden";
 var inputArray=[];
 var randomize;
 var flagEng = 0;
@@ -169,12 +172,20 @@ function clicker(i) {
 function reform() {
     document.getElementById("reformSentance").style.visibility = "hidden";
     document.getElementById("formedSentance").style.visibility = "hidden";
-    inputArray = "";
+    inputArray = [];
     document.getElementById("inputSentance").innerHTML = inputArray;
     document.getElementById("randomButtons").innerHTML = "";
     for (var i = 0; i < randomize.length; i++) {
         document.getElementById("randomButtons").innerHTML += "<button class='sentanceButtons' id= '" + i + "' onclick='clicker(" + i + ")'>" + randomize[i] + "</button>";
     }
+    document.getElementById("rightAnswer").style.display = "block";
+    document.getElementById("wrongAnswer").style.display = "block";
+    document.getElementById("checkButton").style.visibility = "hidden";
+    document.getElementById("rightAnswer").style.visibility = "hidden";
+    document.getElementById("wrongAnswer").style.visibility = "hidden";
+    document.getElementById("getSentButton").style.visibility = "hidden";
+    engflag = 0;
+    hinflag = 0;
 }
 function corpus() {
     var displayCorpus = document.getElementById("corpusSelection").value;
@@ -438,9 +449,14 @@ function checkerFunction() {
         }
     }
     if (engflag > 0 || hinflag > 0) {
-        console.log("right");
+        document.getElementById("rightAnswer").style.visibility = "visible";
+        document.getElementById("wrongAnswer").style.display = "none";
+        document.getElementById("rightAnswer").style.display = "block";
     }
     else {
-        console.log("wrong");
+        document.getElementById("getSentButton").style.visibility = "visible";
+        document.getElementById("rightAnswer").style.display = "none";
+        document.getElementById("wrongAnswer").style.visibility = "visible";
+        document.getElementById("wrongAnswer").style.display = "block";
     }
 }

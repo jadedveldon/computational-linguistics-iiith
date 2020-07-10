@@ -12,3 +12,13 @@ option{
     margin-right: 10px;
     margin-left: 10px;
 }
+#rightAnswer{
+    color: green;
+    font-size:40px;
+    font-weight:bold;
+}
+#wrongAnswer {
+    color: red;
+    font-size:40px;
+    font-weight:bold;
+}
