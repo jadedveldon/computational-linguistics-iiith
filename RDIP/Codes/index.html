@@ -9,14 +9,24 @@
     <div>
         <p>Experiment</p>
         <div id="wrap">
-        <div id="selection">
+            <div>
+                <select id="corpusSelection" onchange="corpus()">
+                    <option value="null">---Select corpus---</option>
+                    <option value="passage1">Corpus 1</option>
+                    <option value="passage2">Corpus 2</option>
+                    <option value="passage3">Corpus 3</option>
+                </select><br><br>
+                <p id="displayCorpus"></p><br><br>
+            </div>
+            <div id="selection">
             <select id="select" onchange="selectOptions()">
                 <option value="null">---Selected Language---</option>
                 <option value="english">English</option>
                 <option value="hindi">Hindi</option>
             </select>
+             </div>
             <p id="message"></p>
-            <p id="randomButtons"></p>
+            <p id="randomButtons"></p><br>
             <div id="formedSentance">
                 <p>Formed Sentence (after selecting words):</p>
             </div>
@@ -24,7 +34,9 @@
             <div id="reformSentance">
             <button onclick="reform()">Re-form the sentance</button>
             </div>
-        </div>
+            <div id="checkButton">
+                <button>check correctness of the sentance</button>
+            </div>
         </div>
     </div>
     <script type="text/javascript" src="function.js"></script>
