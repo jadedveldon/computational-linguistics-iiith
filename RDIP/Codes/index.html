@@ -6,36 +6,49 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <div>
-        <p>Experiment</p>
-        <div id="wrap">
+    <div class="back">
+        <div class="jumbotron"> 
+        <h1>Experiment</h1>
+        </div>
+        <div class="container" id="wrap">
             <div>
-                <select id="corpusSelection" onchange="corpus()">
-                    <option value="null">---Select corpus---</option>
-                    <option value="passage1">Corpus 1</option>
-                    <option value="passage2">Corpus 2</option>
-                    <option value="passage3">Corpus 3</option>
-                </select><br><br>
+                <div class="input-group col-md-3 mx-auto">
+                    <select class="custom-select" id="corpusSelection" onchange="corpus()">
+                        <option value="null">---Select corpus---</option>
+                        <option value="passage1">Corpus 1</option>
+                        <option value="passage2">Corpus 2</option>
+                        <option value="passage3">Corpus 3</option>
+                    </select><br><br>
+                </div>
                 <p id="displayCorpus"></p><br><br>
             </div>
-            <div id="selection">
-            <select id="select" onchange="selectOptions()">
-                <option value="null">---Selected Language---</option>
-                <option value="english">English</option>
-                <option value="hindi">Hindi</option>
-            </select>
-             </div>
-            <p id="message" class="blue"></p>
-            <p id="randomButtons"></p><br>
-            <div id="formedSentance">
-                <p class="blue"><b>Formed Sentence (after selecting words):</b></p>
+            <div class="input-group col-md-3 mx-auto">
+                <select class="custom-select" id="select" onchange="selectOptions()">
+                    <option value="null">---Selected Language---</option>
+                    <option value="english">English</option>
+                    <option value="hindi">Hindi</option>
+                </select>
             </div>
-            <p id="inputSentance" ></p>
+
+            <br>
+            <p id="message" class="textColor"></p>
+            <br>
+
+            <p id="randomButtons"></p><br>
+
+            <div id="formedSentance">
+                <p class="textColor"><b>Formed Sentence (after selecting words):</b></p>
+            </div>
+
+            <div class="alert alert-dark" id="InputDiv">
+                <p id="inputSentance"></p>
+            </div>
+
             <div id="reformSentance">
-            <button onclick="reform()">Re-form the sentance</button><br><br>
+                <button class="btn btn-dark buttongap" onclick="reform()">Re-form the sentance</button><br><br>
             </div>
             <div id="checkButton">
-                <button onclick="checkerFunction()">check correctness of the sentance</button><br><br>
+                <button class="btn btn-dark buttongap" onclick="checkerFunction()">check correctness of the sentance</button><br><br>
             </div>
             <div id="rightAnswer">
                 Right Answer!!!<br><br>
@@ -44,13 +57,13 @@
                 Wrong Answer!!!<br><br>
             </div>
             <div id="getSentButton">
-                <button id="getCorrect" onclick="getCorrect()">Get Correct Sentance</button>
+                <button class="btn btn-dark" id="getCorrect" onclick="getCorrect()">Get Correct Sentance</button>
             </div>
             <div id="toggler">
-                <button id="answersToggle" onclick="hideAnswers()">Hide Correct Answers</button>
-                <button id="answersToggle2" onclick="showAnswers()">Get Answers</button>
+                <button class="btn btn-dark" id="answersToggle" onclick="hideAnswers()">Hide Correct Answers</button>
+                <button class="btn btn-dark" id="answersToggle2" onclick="showAnswers()">Get Answers</button>
             </div>
-            <div id="answers">
+            <div class="alert alert-dark" id="answers">
                 <p id="a"></p>
                 <p id="b"></p>
                 <p id="c"></p>
@@ -63,9 +76,10 @@
                 <p id="j"></p>
                 <p id="k"></p>
                 <p id="l"></p>
-            </div>
+            </div><br /><br />
         </div>
     </div>
     <script type="text/javascript" src="function.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </body>
 </html>

@@ -1,10 +1,13 @@
 html{
     font-family:Arial, Helvetica, sans-serif;
 }
-option{
+#displayCorpus {
+    color: azure;
+}
+option, h1{
     text-align:center;
 }
-#selection {
+.selection {
     align-content: center;
     display: inline-block;
 }
@@ -12,16 +15,19 @@ option{
     align-content: center;
     display: inline-block;
 }
+.back{
+    background-color:mediumpurple;
+}
+.jumbotron{
+    color:purple;
+}
+
 #getSentButton {
     align-content: center;
     display: inline-block;
 }
 #wrap{
     text-align:center;
-}
-.sentanceButtons {
-    margin-right: 10px;
-    margin-left: 10px;
 }
 #rightAnswer{
     color: green;
@@ -37,6 +43,13 @@ option{
     font-size: 40px;
     color: #211a23;
 }
-.blue{
-    color:blue;
+.textColor{
+    color:azure;
+    font-size:large;
 }
+.buttongap{
+    margin-left:10px;
+    margin-right:10px;
+}
+
+

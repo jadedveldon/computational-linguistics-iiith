@@ -109,6 +109,8 @@ document.getElementById("wrongAnswer").style.visibility = "hidden";
 document.getElementById("getSentButton").style.visibility = "hidden";
 document.getElementById("answersToggle").style.visibility = "hidden";
 document.getElementById("answersToggle2").style.visibility = "hidden";
+document.getElementById("InputDiv").style.visibility = "hidden";
+
 var inputArray=[];
 var randomize;
 var flagEng = 0;
@@ -140,7 +142,7 @@ function randomEnglish() {
     var sentance = sentanceEnglish[engIndex];
     randomize = randomizeWords(sentance);
     for (var i = 0; i < randomize.length; i++) {
-        document.getElementById("randomButtons").innerHTML += "<button class='sentanceButtons' id= '" + i + "' onclick='clicker("+i+")'>" + randomize[i] + "</button>";
+        document.getElementById("randomButtons").innerHTML += "<button class='btn btn-dark buttongap' id= '" + i + "' onclick='clicker("+i+")'>" + randomize[i] + "</button>";
     }
 }
 function randomHindi() {
@@ -152,7 +154,7 @@ function randomHindi() {
     var sentance = sentanceHindi[hinIndex];
     randomize = randomizeWords(sentance);
     for (var i = 0; i < randomize.length; i++) {
-        document.getElementById("randomButtons").innerHTML += "<button class='sentanceButtons' id= '" + i + "' onclick='clicker(" + i + ")'>" + randomize[i] + "</button>";
+        document.getElementById("randomButtons").innerHTML += "<button class='btn btn-dark buttongap' id= '" + i + "' onclick='clicker(" + i + ")'>" + randomize[i] + "</button>";
     }
 }
 function randomizeWords(innerArray) {
@@ -170,6 +172,7 @@ function randomizeWords(innerArray) {
 function clicker(i) {
     document.getElementById("formedSentance").style.visibility = "visible";
     document.getElementById("reformSentance").style.visibility = "visible";
+    document.getElementById("InputDiv").style.visibility = "visible";
     var buttonID = document.getElementById(i);
     buttonID.style.display = "none";
     inputArray.push(buttonID.textContent);
@@ -182,11 +185,12 @@ function clicker(i) {
 function reform() {
     document.getElementById("reformSentance").style.visibility = "hidden";
     document.getElementById("formedSentance").style.visibility = "hidden";
+    document.getElementById("InputDiv").style.visibility = "hidden";
     inputArray = [];
     document.getElementById("inputSentance").innerHTML = inputArray;
     document.getElementById("randomButtons").innerHTML = "";
     for (var i = 0; i < randomize.length; i++) {
-        document.getElementById("randomButtons").innerHTML += "<button class='sentanceButtons' id= '" + i + "' onclick='clicker(" + i + ")'>" + randomize[i] + "</button>";
+        document.getElementById("randomButtons").innerHTML += "<button class='btn btn-dark buttongap' id= '" + i + "' onclick='clicker(" + i + ")'>" + randomize[i] + "</button>";
     }
     document.getElementById("rightAnswer").style.display = "block";
     document.getElementById("wrongAnswer").style.display = "block";
@@ -228,8 +232,8 @@ function corpus() {
     }
     document.getElementById("displayCorpus").innerHTML = corpusDetails;
 }
-var engflag;
-var hinflag;
+var engflag = 0;
+var hinflag = 0;
 function checkerFunction() {
     if (flagEng > 0) {
         if (JSON.stringify(inputArray) == JSON.stringify(e11)) {
@@ -425,7 +429,6 @@ function checkerFunction() {
         }
         if (JSON.stringify(inputArray) == JSON.stringify(h54)) {
             hinflag++;
-            hinflag5++;
         }
         if (JSON.stringify(inputArray) == JSON.stringify(h55)) {
             hinflag++;
