@@ -25,12 +25,12 @@
                 <option value="hindi">Hindi</option>
             </select>
              </div>
-            <p id="message"></p>
+            <p id="message" class="blue"></p>
             <p id="randomButtons"></p><br>
             <div id="formedSentance">
-                <p>Formed Sentence (after selecting words):</p>
+                <p class="blue">Formed Sentence (after selecting words):</p>
             </div>
-            <p id="inputSentance"></p>
+            <p id="inputSentance" ></p>
             <div id="reformSentance">
             <button onclick="reform()">Re-form the sentance</button><br><br>
             </div>
@@ -44,7 +44,25 @@
                 Wrong Answer!!!<br><br>
             </div>
             <div id="getSentButton">
-                <button>Get Correct Sentance</button>
+                <button id="getCorrect" onclick="getCorrect()">Get Correct Sentance</button>
+            </div>
+            <div id="toggler">
+                <button id="answersToggle" onclick="hideAnswers()">Hide Correct Answers</button>
+                <button id="answersToggle2" onclick="showAnswers()">Get Answers</button>
+            </div>
+            <div id="answers">
+                <p id="a"></p>
+                <p id="b"></p>
+                <p id="c"></p>
+                <p id="d"></p>
+                <p id="e"></p>
+                <p id="f"></p>
+                <p id="g"></p>
+                <p id="h"></p>
+                <p id="i"></p>
+                <p id="j"></p>
+                <p id="k"></p>
+                <p id="l"></p>
             </div>
         </div>
     </div>

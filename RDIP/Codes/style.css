@@ -1,7 +1,18 @@
+html{
+    font-family:Arial, Helvetica, sans-serif;
+}
 option{
     text-align:center;
 }
 #selection {
+    align-content: center;
+    display: inline-block;
+}
+#toggler {
+    align-content: center;
+    display: inline-block;
+}
+#getSentButton {
     align-content: center;
     display: inline-block;
 }
@@ -15,10 +26,18 @@ option{
 #rightAnswer{
     color: green;
     font-size:40px;
-    font-weight:bold;
+    font-weight:500;
 }
 #wrongAnswer {
     color: red;
     font-size:40px;
+    font-weight:500;
+}
+#inputSentance {
+    font-size: 40px;
+    color: #211a23;
+}
+.blue{
+    color:blue;
     font-weight:bold;
 }

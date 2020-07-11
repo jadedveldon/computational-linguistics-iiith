@@ -107,6 +107,8 @@ document.getElementById("checkButton").style.visibility = "hidden";
 document.getElementById("rightAnswer").style.visibility = "hidden";
 document.getElementById("wrongAnswer").style.visibility = "hidden";
 document.getElementById("getSentButton").style.visibility = "hidden";
+document.getElementById("answersToggle").style.visibility = "hidden";
+document.getElementById("answersToggle2").style.visibility = "hidden";
 var inputArray=[];
 var randomize;
 var flagEng = 0;
@@ -127,19 +129,23 @@ function selectOptions() {
     }
     document.getElementById("message").innerHTML = text;
 }
+var engIndex;
 function randomEnglish() {
     inputArray = [];
     flagEng++;
-    var sentance = sentanceEnglish[Math.floor(Math.random() * sentanceEnglish.length)];
+    engIndex = Math.floor(Math.random() * sentanceEnglish.length);
+    var sentance = sentanceEnglish[engIndex];
     randomize = randomizeWords(sentance);
     for (var i = 0; i < randomize.length; i++) {
         document.getElementById("randomButtons").innerHTML += "<button class='sentanceButtons' id= '" + i + "' onclick='clicker("+i+")'>" + randomize[i] + "</button>";
     }
 }
+var hinIndex;
 function randomHindi() {
     inputArray = [];
     flagHin++;
-    var sentance = sentanceHindi[Math.floor(Math.random() * sentanceHindi.length)];
+    hinIndex = Math.floor(Math.random() * sentanceHindi.length);
+    var sentance = sentanceHindi[hinIndex];
     randomize = randomizeWords(sentance);
     for (var i = 0; i < randomize.length; i++) {
         document.getElementById("randomButtons").innerHTML += "<button class='sentanceButtons' id= '" + i + "' onclick='clicker(" + i + ")'>" + randomize[i] + "</button>";
@@ -186,6 +192,23 @@ function reform() {
     document.getElementById("getSentButton").style.visibility = "hidden";
     engflag = 0;
     hinflag = 0;
+    document.getElementById("a").innerHTML = "";
+    document.getElementById("b").innerHTML = "";
+    document.getElementById("c").innerHTML = "";
+    document.getElementById("d").innerHTML = "";
+    document.getElementById("e").innerHTML = "";
+    document.getElementById("f").innerHTML = "";
+    document.getElementById("g").innerHTML = "";
+    document.getElementById("h").innerHTML = "";
+    document.getElementById("i").innerHTML = "";
+    document.getElementById("j").innerHTML = "";
+    document.getElementById("k").innerHTML = "";
+    document.getElementById("l").innerHTML = "";
+    document.getElementById("answersToggle").style.display = "block";
+    document.getElementById("answersToggle2").style.display = "block";
+    document.getElementById("answersToggle").style.visibility = "hidden";
+    document.getElementById("answersToggle2").style.visibility = "hidden";
+    document.getElementById("getCorrect").style.display = "block";
 }
 function corpus() {
     var displayCorpus = document.getElementById("corpusSelection").value;
@@ -201,8 +224,8 @@ function corpus() {
     }
     document.getElementById("displayCorpus").innerHTML = corpusDetails;
 }
-var engflag = 0;
-var hinflag = 0;
+var engflag;
+var hinflag;
 function checkerFunction() {
     if (flagEng > 0) {
         if (JSON.stringify(inputArray) == JSON.stringify(e11)) {
@@ -398,6 +421,7 @@ function checkerFunction() {
         }
         if (JSON.stringify(inputArray) == JSON.stringify(h54)) {
             hinflag++;
+            hinflag5++;
         }
         if (JSON.stringify(inputArray) == JSON.stringify(h55)) {
             hinflag++;
@@ -459,4 +483,214 @@ function checkerFunction() {
         document.getElementById("wrongAnswer").style.visibility = "visible";
         document.getElementById("wrongAnswer").style.display = "block";
     }
+}
+function getCorrect() {
+    var str;
+    if (engIndex == 0) {
+        str = e11.join(' ');
+        document.getElementById("a").innerHTML = str;
+        str = e12.join(' ');
+        document.getElementById("b").innerHTML = str;
+        str = e13.join(' ');
+        document.getElementById("c").innerHTML = str;
+    }
+    if (engIndex == 1) {
+        str = e21.join(' ');
+        document.getElementById("a").innerHTML = str;
+        str = e22.join(' ');
+        document.getElementById("b").innerHTML = str;
+    }
+    if (engIndex == 2) {
+        str = e31.join(' ');
+        document.getElementById("a").innerHTML = str;
+        str = e32.join(' ');
+        document.getElementById("b").innerHTML = str;
+    }
+    if (engIndex == 3) {
+        str = e41.join(' ');
+        document.getElementById("a").innerHTML = str;
+        str = e42.join(' ');
+        document.getElementById("b").innerHTML = str;
+        str = e43.join(' ');
+        document.getElementById("c").innerHTML = str;
+    }
+    if (engIndex == 4) {
+        str = e51.join(' ');
+        document.getElementById("a").innerHTML = str;
+        str = e52.join(' ');
+        document.getElementById("b").innerHTML = str;
+    }
+    if (engIndex == 6) {
+        str = e71.join(' ');
+        document.getElementById("a").innerHTML = str;
+        str = e72.join(' ');
+        document.getElementById("b").innerHTML = str;
+    }
+    if (engIndex == 7) {
+        str = e81.join(' ');
+        document.getElementById("a").innerHTML = str;
+        str = e82.join(' ');
+        document.getElementById("b").innerHTML = str;
+    }
+    if (engIndex == 5) {
+        str = e61.join(' ');
+        document.getElementById("a").innerHTML = str;
+        str = e62.join(' ');
+        document.getElementById("b").innerHTML = str;
+        str = e63.join(' ');
+        document.getElementById("c").innerHTML = str;
+        str = e64.join(' ');
+        document.getElementById("d").innerHTML = str;
+    }
+    if (engIndex == 9) {
+        str = e101.join(' ');
+        document.getElementById("a").innerHTML = str;
+        str = e102.join(' ');
+        document.getElementById("b").innerHTML = str;
+        str = e103.join(' ');
+        document.getElementById("c").innerHTML = str;
+        str = e104.join(' ');
+        document.getElementById("d").innerHTML = str;
+        str = e105.join(' ');
+        document.getElementById("e").innerHTML = str;
+        str = e106.join(' ');
+        document.getElementById("f").innerHTML = str;
+    }
+    if (engIndex == 8) {
+        str = e91.join(' ');
+        document.getElementById("a").innerHTML = str;
+        str = e92.join(' ');
+        document.getElementById("b").innerHTML = str;
+        str = e93.join(' ');
+        document.getElementById("c").innerHTML = str;
+        str = e94.join(' ');
+        document.getElementById("d").innerHTML = str;
+        str = e95.join(' ');
+        document.getElementById("e").innerHTML = str;
+        str = e96.join(' ');
+        document.getElementById("f").innerHTML = str;
+        str = e97.join(' ');
+        document.getElementById("g").innerHTML = str;
+        str = e98.join(' ');
+        document.getElementById("h").innerHTML = str;
+    }
+    if (hinIndex == 4) {
+        str = h41.join(' ');
+        document.getElementById("a").innerHTML = str;
+        str = h42.join(' ');
+        document.getElementById("b").innerHTML = str;
+        str = h43.join(' ');
+        document.getElementById("c").innerHTML = str;
+        str = h44.join(' ');
+        document.getElementById("d").innerHTML = str;
+        str = h45.join(' ');
+        document.getElementById("e").innerHTML = str;
+        str = h46.join(' ');
+        document.getElementById("f").innerHTML = str;
+    }
+    if (hinIndex == 5) {
+        str = h61.join(' ');
+        document.getElementById("a").innerHTML = str;
+        str = h62.join(' ');
+        document.getElementById("b").innerHTML = str;
+        str = h63.join(' ');
+        document.getElementById("c").innerHTML = str;
+        str = h64.join(' ');
+        document.getElementById("d").innerHTML = str;
+    }
+    if (hinIndex == 0) {
+        str = h11.join(' ');
+        document.getElementById("a").innerHTML = str;
+        str = h12.join(' ');
+        document.getElementById("b").innerHTML = str;
+        str = h13.join(' ');
+        document.getElementById("c").innerHTML = str;
+        str = h14.join(' ');
+        document.getElementById("d").innerHTML = str;
+    }
+    if (hinIndex == 1) {
+        str = h21.join(' ');
+        document.getElementById("a").innerHTML = str;
+        str = h22.join(' ');
+        document.getElementById("b").innerHTML = str;
+        str = h23.join(' ');
+        document.getElementById("c").innerHTML = str;
+        str = h24.join(' ');
+        document.getElementById("d").innerHTML = str;
+    }
+    if (hinIndex == 4) {
+        str = h51.join(' ');
+        document.getElementById("a").innerHTML = str;
+        str = h52.join(' ');
+        document.getElementById("b").innerHTML = str;
+        str = h53.join(' ');
+        document.getElementById("c").innerHTML = str;
+        str = h54.join(' ');
+        document.getElementById("d").innerHTML = str;
+        str = h55.join(' ');
+        document.getElementById("e").innerHTML = str;
+        str = h56.join(' ');
+        document.getElementById("f").innerHTML = str;
+        str = h57.join(' ');
+        document.getElementById("g").innerHTML = str;
+        str = h58.join(' ');
+        document.getElementById("h").innerHTML = str;
+    }
+    if (hinIndex == 6) {
+        str = h71.join(' ');
+        document.getElementById("a").innerHTML = str;
+        str = h72.join(' ');
+        document.getElementById("b").innerHTML = str;
+        str = h73.join(' ');
+        document.getElementById("c").innerHTML = str;
+        str = h74.join(' ');
+        document.getElementById("d").innerHTML = str;
+        str = h75.join(' ');
+        document.getElementById("e").innerHTML = str;
+        str = h76.join(' ');
+        document.getElementById("f").innerHTML = str;
+        str = h77.join(' ');
+        document.getElementById("g").innerHTML = str;
+        str = h78.join(' ');
+        document.getElementById("h").innerHTML = str;
+    }
+    if (hinIndex == 2) {
+        str = h31.join(' ');
+        document.getElementById("a").innerHTML = str;
+        str = h32.join(' ');
+        document.getElementById("b").innerHTML = str;
+        str = h33.join(' ');
+        document.getElementById("c").innerHTML = str;
+        str = h34.join(' ');
+        document.getElementById("d").innerHTML = str;
+        str = h35.join(' ');
+        document.getElementById("e").innerHTML = str;
+        str = h36.join(' ');
+        document.getElementById("f").innerHTML = str;
+        str = h37.join(' ');
+        document.getElementById("g").innerHTML = str;
+        str = h38.join(' ');
+        document.getElementById("h").innerHTML = str;
+        str = h39.join(' ');
+        document.getElementById("i").innerHTML = str;
+        str = h310.join(' ');
+        document.getElementById("j").innerHTML = str;
+        str = h311.join(' ');
+        document.getElementById("k").innerHTML = str;
+        str = h312.join(' ');
+        document.getElementById("l").innerHTML = str;
+    }
+    document.getElementById("getCorrect").style.display = "none";
+    document.getElementById("answersToggle").style.visibility = "visible";
+}
+function hideAnswers() {
+    document.getElementById("answersToggle").style.display = "none";
+    document.getElementById("answers").style.visibility = "hidden";
+    document.getElementById("answersToggle2").style.visibility = "visible";
+    document.getElementById("answersToggle2").style.display = "block";
+}
+function showAnswers() {
+    document.getElementById("answers").style.visibility = "visible";
+    document.getElementById("answersToggle").style.display = "block";
+    document.getElementById("answersToggle2").style.display = "none";
 }
