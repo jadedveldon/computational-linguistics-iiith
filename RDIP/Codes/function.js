@@ -117,11 +117,11 @@ function selectOptions() {
     var selection = document.getElementById("select").value;
     var text = "";
     if(selection == 'english' ){
-        text = "Form a sentence (Declarative or Interrogative or any other type) from the given words<br>(select the buttons in proper order)";
+        text = "<b>Form a sentence (Declarative or Interrogative or any other type) from the given words</b><br><i>(select the buttons in proper order)</i>";
         randomEnglish();
     }
     else if (selection == 'hindi' ){
-        text = "Form a sentence (Declarative or Interrogative or any other type) from the given words<br>(select the buttons in proper order)";
+        text = "<b>Form a sentence (Declarative or Interrogative or any other type) from the given words</b><br><i>(select the buttons in proper order)</i>";
         randomHindi();
     }
     else {
@@ -129,9 +129,12 @@ function selectOptions() {
     }
     document.getElementById("message").innerHTML = text;
 }
+var hinIndex;
 var engIndex;
 function randomEnglish() {
     inputArray = [];
+    hinIndex = 'null';
+    document.getElementById("randomButtons").innerHTML = "";
     flagEng++;
     engIndex = Math.floor(Math.random() * sentanceEnglish.length);
     var sentance = sentanceEnglish[engIndex];
@@ -140,9 +143,10 @@ function randomEnglish() {
         document.getElementById("randomButtons").innerHTML += "<button class='sentanceButtons' id= '" + i + "' onclick='clicker("+i+")'>" + randomize[i] + "</button>";
     }
 }
-var hinIndex;
 function randomHindi() {
     inputArray = [];
+    engIndex = 'null';
+    document.getElementById("randomButtons").innerHTML = "";
     flagHin++;
     hinIndex = Math.floor(Math.random() * sentanceHindi.length);
     var sentance = sentanceHindi[hinIndex];
