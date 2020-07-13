@@ -1,0 +1,16 @@
+Experiment starts with a corpus selection 
+
+then we have to select from one of the 3 corpuses available to us.
+
+upon selection the corpus text is displayed to us.
+
+Then 2 text boxes appear with in a table which take numbers as input and one box takes number of tokens and another the types.
+
+Then upon clicking the subit button it either displays right answer or wrong depending on the input and if both are correct then right else wrong.
+
+The input boxes also turn into green on red if they have the correct and the wrong answer respectively.
+
+If the values for both #tokens and #types are correct then we get to the continue button.
+
+which displays text and shows another text field which takes the #new types and displays right or wrong answer for it.
+ 
