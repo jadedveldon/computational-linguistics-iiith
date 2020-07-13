@@ -8,12 +8,36 @@
 <body>
     <div id="wrap">
         <div id="corpusSelect">
-            <select id="corpusSelection" >
+            <select id="corpusSelection" onchange="corpus()">
                 <option value="null">---Select corpus---</option>
                 <option value="passage1">Corpus 1</option>
                 <option value="passage2">Corpus 2</option>
                 <option value="passage3">Corpus 3</option>
-            </select>
+            </select><br><br>
+            <p id="displayCorpus"></p>
+        </div>
+        <div id="instructText">
+            <p>Enter the number of tokens and types for the above corpus:</p>
+        </div>
+        <div id="table">
+            <table>
+                <tr>
+                    <td>
+                        <label for="tokens">#tokens:</label>
+                    </td>
+                    <td>
+                        <input type="text" id="tokens" name="tokens" size="4">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="types">#types:</label>
+                    </td>
+                    <td>
+                        <input type="text" id="types" name="types" size="4">
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
     <script type="text/javascript" src="function_uint4.js"></script>

@@ -1,6 +1,10 @@
 #wrap{
     text-align:center;
 }
-#corpusSelect{
+#corpusSelect, #table{
     display:inline-block;
+}
+table, tr, td{
+    border:1px solid black;
+    border-collapse:collapse;
 }
