@@ -5,6 +5,7 @@ Corpus_3 = `A man had a little dog, and he was very fond of it. He would pat its
 document.getElementById("instructText").style.visibility = "hidden";
 document.getElementById("table").style.visibility = "hidden";
 document.getElementById("continue").style.visibility = "hidden";
+document.getElementById("message").style.visibility = "hidden";
 
 Corpus_1 = Corpus_1.replace(/[^\w\s]|/g, "");
 Corpus_2 = Corpus_2.replace(/[^\w\s]|/g, "");
@@ -59,23 +60,35 @@ function submit(inputToken,inputType) {
     console.log(inputType);
     if (inputToken == token && inputType == type) {
         document.getElementById('answer').innerHTML = "Right answer!";
+        document.getElementById('answer').style.color = "green";
         document.getElementById('tokens').style.backgroundColor = "green";
         document.getElementById('types').style.backgroundColor = "green";
         document.getElementById("continue").style.visibility = "visible";
     }
     if (inputToken != token && inputType == type) {
         document.getElementById('answer').innerHTML = "Wrong answer!";
+        document.getElementById('answer').style.color = "red";
         document.getElementById('tokens').style.backgroundColor = "red";
         document.getElementById('types').style.backgroundColor = "green";
     }
     if (inputToken == token && inputType != type) {
         document.getElementById('answer').innerHTML = "Wrong answer!";
+        document.getElementById('answer').style.color = "red";
         document.getElementById('tokens').style.backgroundColor = "green";
         document.getElementById('types').style.backgroundColor = "red";
     }
     if (inputToken != token && inputType != type) {
         document.getElementById('answer').innerHTML = "Wrong answer!";
+        document.getElementById('answer').style.color = "red";
         document.getElementById('tokens').style.backgroundColor = "red";
         document.getElementById('types').style.backgroundColor = "red";
     }
+}
+function continueFunction() {
+    document.getElementById("submitButton").style.display = "none";
+    document.getElementById("answer").style.display = "none";
+    document.getElementById("message").style.visibility = "visible";
+    document.getElementById('message').innerHTML= "<p>Now, consider all the tokens with the same 'root' word to be of the same type. Recalculate the number of types</p>";
+    document.getElementById('continue').innerHTML = "#New types:";
+    document.getElementById('newInput').innerHTML = "<input id='newTypes' type=text size='4'>";
 }
