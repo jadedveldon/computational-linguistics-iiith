@@ -157,9 +157,11 @@ var rootType3 = countTypes(s3).length;
 function stemInput(root) {
     var input = document.getElementById("newTypes").value;
     if (input == root) {
-        alert('correct');
+        document.getElementById('answer2').innerHTML = "Right answer!";
+        document.getElementById('answer2').style.color = "green";
     }
     else {
-        alert('wrong');
+        document.getElementById('answer2').innerHTML = "Wrong answer!";
+        document.getElementById('answer2').style.color = "red";
     }
 }
