@@ -11,16 +11,17 @@ document.getElementById("instructText").style.visibility = "hidden";
 document.getElementById("table").style.visibility = "hidden";
 document.getElementById("continue").style.visibility = "hidden";
 document.getElementById("message").style.visibility = "hidden";
+document.getElementById('stemSubmit').style.visibility = "hidden";
 
-Corpus_1 = Corpus_1.replace(/[^\w\s]|/g, "");
-Corpus_2 = Corpus_2.replace(/[^\w\s]|/g, "");
-Corpus_3 = Corpus_3.replace(/[^\w\s]|/g, "");
+corpus_1 = Corpus_1.replace(/[^\w\s]|/g, "");
+corpus_2 = Corpus_2.replace(/[^\w\s]|/g, "");
+corpus_3 = Corpus_3.replace(/[^\w\s]|/g, "");
 
-var lower1 = Corpus_1.toLowerCase();
+var lower1 = corpus_1.toLowerCase();
 var paragraph_1 = lower1.split(" ");
-var lower2 = Corpus_2.toLowerCase();
+var lower2 = corpus_2.toLowerCase();
 var paragraph_2 = lower2.split(" ");
-var lower3 = Corpus_3.toLowerCase();
+var lower3 = corpus_3.toLowerCase();
 var paragraph_3 = lower3.split(" ");
 var corpusTokens1 = paragraph_1.length;
 var corpusTokens2 = paragraph_2.length;
@@ -31,7 +32,7 @@ function countTypes(arr) {
     for (var i = 0, l = arr.length; i < l; i++)
         if (a.indexOf(arr[i]) === -1 && arr[i] !== '')
             a.push(arr[i]);
-    return a.length;
+    return a;
 }
 var corpusType1 = countTypes(paragraph_1);
 var corpusType2 = countTypes(paragraph_2);
@@ -42,15 +43,15 @@ function corpus() {
     var corpusDetails = "";
     if (displayCorpus == 'passage1') {
         corpusDetails = Corpus_1;
-        document.getElementById("submitButton").innerHTML = '<button onclick="submit(corpusTokens1,corpusType1)">Submit</button>';
+        document.getElementById("submitButton").innerHTML = '<button onclick="submit(corpusTokens1,corpusType1.length)">Submit</button>';
     }
     if (displayCorpus == 'passage2') {
         corpusDetails = Corpus_2;
-        document.getElementById("submitButton").innerHTML = `<button onclick="submit(corpusTokens2,corpusType2)">Submit</button>`;
+        document.getElementById("submitButton").innerHTML = `<button onclick="submit(corpusTokens2,corpusType2.length)">Submit</button>`;
     }
     if (displayCorpus == 'passage3') {
         corpusDetails = Corpus_3;
-        document.getElementById("submitButton").innerHTML = `<button onclick="submit(corpusTokens3,corpusType3)">Submit</button>`;
+        document.getElementById("submitButton").innerHTML = `<button onclick="submit(corpusTokens3,corpusType3.length)">Submit</button>`;
     }
     document.getElementById("displayCorpus").innerHTML = corpusDetails;
     document.getElementById("instructText").style.visibility = "visible";
@@ -96,4 +97,56 @@ function continueFunction() {
     document.getElementById('message').innerHTML= "<p>Now, consider all the tokens with the same 'root' word to be of the same type. Recalculate the number of types</p>";
     document.getElementById('continue').innerHTML = "#New types:";
     document.getElementById('newInput').innerHTML = "<input id='newTypes' type=text size='4'>";
+    document.getElementById('stemSubmit').style.visibility = "visible";
 }
+var s1 = [];
+for (var i = 0; i < corpusType1.length; i++) {
+    stemmer.setCurrent(corpusType1[i]);
+    stemmer.stem();
+    s1.push(stemmer.getCurrent());
+}
+function removeItem(arr, value) {
+    var index = arr.indexOf(value);
+    if (index > -1) {
+        arr.splice(index, 1);
+    }
+    return arr;
+}
+removeItem(s1, 'found');
+removeItem(s1, 'grown');
+removeItem(s1, 'not');
+removeItem(s1, 'he');
+removeItem(s1, 'were');
+
+var s2 = [];
+for (var i = 0; i < corpusType2.length; i++) {
+    stemmer.setCurrent(corpusType2[i]);
+    stemmer.stem();
+    s2.push(stemmer.getCurrent());
+}
+removeItem(s2, 'me');
+removeItem(s2, 'heard');
+removeItem(s2, 'himself');
+removeItem(s2, 'this');
+removeItem(s2, 'his');
+removeItem(s2, 'had');
+removeItem(s2, 'him');
+removeItem(s2, 'he');
+
+var s3 = [];
+for (var i = 0; i < corpusType3.length; i++) {
+    stemmer.setCurrent(corpusType3[i]);
+    stemmer.stem();
+    s3.push(stemmer.getCurrent());
+}
+removeItem(s3, 'me');
+removeItem(s3, 'doe');
+removeItem(s3, 'himself');
+removeItem(s3, 'run');
+removeItem(s3, 'did');
+removeItem(s3, 'into');
+removeItem(s3, 'shout');
+
+console.log(s1);
+console.log(s2);
+console.log(s3);
