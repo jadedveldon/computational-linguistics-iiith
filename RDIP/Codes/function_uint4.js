@@ -44,14 +44,17 @@ function corpus() {
     if (displayCorpus == 'passage1') {
         corpusDetails = Corpus_1;
         document.getElementById("submitButton").innerHTML = '<button onclick="submit(corpusTokens1,corpusType1.length)">Submit</button>';
+        document.getElementById("stemSubmit").innerHTML = `<button onclick="stemInput(rootType1)">Submit</button>`;
     }
     if (displayCorpus == 'passage2') {
         corpusDetails = Corpus_2;
         document.getElementById("submitButton").innerHTML = `<button onclick="submit(corpusTokens2,corpusType2.length)">Submit</button>`;
+        document.getElementById("stemSubmit").innerHTML = `<button onclick="stemInput(rootType2)">Submit</button>`;
     }
     if (displayCorpus == 'passage3') {
         corpusDetails = Corpus_3;
         document.getElementById("submitButton").innerHTML = `<button onclick="submit(corpusTokens3,corpusType3.length)">Submit</button>`;
+        document.getElementById("stemSubmit").innerHTML = `<button onclick="stemInput(rootType3)">Submit</button>`;
     }
     document.getElementById("displayCorpus").innerHTML = corpusDetails;
     document.getElementById("instructText").style.visibility = "visible";
@@ -147,7 +150,16 @@ removeItem(s3, 'did');
 removeItem(s3, 'into');
 removeItem(s3, 'shout');
 
-rootTypes1 = countTypes(s1).length;
-rootTypes2 = countTypes(s2).length;
-rootTypes3 = countTypes(s3).length;
-console.log(rootTypes1, rootTypes2, rootTypes3);
+var rootType1 = countTypes(s1).length;
+var rootType2 = countTypes(s2).length;
+var rootType3 = countTypes(s3).length;
+
+function stemInput(root) {
+    var input = document.getElementById("newTypes").value;
+    if (input == root) {
+        alert('correct');
+    }
+    else {
+        alert('wrong');
+    }
+}
