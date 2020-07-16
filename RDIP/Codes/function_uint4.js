@@ -147,6 +147,7 @@ removeItem(s3, 'did');
 removeItem(s3, 'into');
 removeItem(s3, 'shout');
 
-console.log(s1);
-console.log(s2);
-console.log(s3);
+rootTypes1 = countTypes(s1).length;
+rootTypes2 = countTypes(s2).length;
+rootTypes3 = countTypes(s3).length;
+console.log(rootTypes1, rootTypes2, rootTypes3);
