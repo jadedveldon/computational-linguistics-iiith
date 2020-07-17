@@ -1,0 +1,12 @@
+Functionalities related to Unit-5
+
+The first dropdown for language selection:
+-English
+-Hindi
+
+After selecting a language another dropdown appears with sentances of language selected.
+Then on selecting a sentance its words are displayed in a table vertically.
+
+Each table has a row corresponding to to every word in the sentance with a similar cell beside it which displays right tik or cross
+then theres a check answers button which shows all thr right answers.
+Later the hide answers button is toggled. 	
