@@ -10,6 +10,9 @@
 </head>
 <body>
     <div id="wrap">
+        <div class="jumbotron" style="color:red">
+            <h1>Experiment</h1>
+        </div>
         <div id="corpusSelect">
             <select id="corpusSelection" onchange="corpus()">
                 <option value="null">---Select corpus---</option>
@@ -45,21 +48,22 @@
         <div id="submitButton">
         </div>
         <div>
-            <p id="answer"></p>
+            <p class="alert alert-dark" id="answer"></p>
         </div><br />
         <div id="message">
         </div><br />
         <div id="continue">
-            <button id="continueButton" onclick="continueFunction()">Continue</button>
+            <button class="btn btn-dark" id="continueButton" onclick="continueFunction()">Continue</button>
         </div>
         <div id="newInput">
         </div><br />
         <div id="stemSubmit">
         </div>
         <div>
-            <p id="answer2"></p>
+            <p class="alert alert-dark" id="answer2"></p>
         </div>
     </div>
     <script type="text/javascript" src="function_uint4.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </body>
 </html>

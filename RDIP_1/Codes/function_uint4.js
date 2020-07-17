@@ -43,18 +43,18 @@ function corpus() {
     var corpusDetails = "";
     if (displayCorpus == 'passage1') {
         corpusDetails = Corpus_1;
-        document.getElementById("submitButton").innerHTML = '<button onclick="submit(corpusTokens1,corpusType1.length)">Submit</button>';
-        document.getElementById("stemSubmit").innerHTML = `<button onclick="stemInput(rootType1)">Submit</button>`;
+        document.getElementById("submitButton").innerHTML = '<button class="btn btn-dark" onclick="submit(corpusTokens1,corpusType1.length)">Submit</button>';
+        document.getElementById("stemSubmit").innerHTML = `<button class="btn btn-dark" onclick="stemInput(rootType1)">Submit</button>`;
     }
     if (displayCorpus == 'passage2') {
         corpusDetails = Corpus_2;
-        document.getElementById("submitButton").innerHTML = `<button onclick="submit(corpusTokens2,corpusType2.length)">Submit</button>`;
-        document.getElementById("stemSubmit").innerHTML = `<button onclick="stemInput(rootType2)">Submit</button>`;
+        document.getElementById("submitButton").innerHTML = `<button class="btn btn-dark" onclick="submit(corpusTokens2,corpusType2.length)">Submit</button>`;
+        document.getElementById("stemSubmit").innerHTML = `<button class="btn btn-dark" onclick="stemInput(rootType2)">Submit</button>`;
     }
     if (displayCorpus == 'passage3') {
         corpusDetails = Corpus_3;
-        document.getElementById("submitButton").innerHTML = `<button onclick="submit(corpusTokens3,corpusType3.length)">Submit</button>`;
-        document.getElementById("stemSubmit").innerHTML = `<button onclick="stemInput(rootType3)">Submit</button>`;
+        document.getElementById("submitButton").innerHTML = `<button class="btn btn-dark" onclick="submit(corpusTokens3,corpusType3.length)">Submit</button>`;
+        document.getElementById("stemSubmit").innerHTML = `<button class="btn btn-dark" onclick="stemInput(rootType3)">Submit</button>`;
     }
     document.getElementById("displayCorpus").innerHTML = corpusDetails;
     document.getElementById("instructText").style.visibility = "visible";
@@ -98,7 +98,7 @@ function continueFunction() {
     document.getElementById("answer").style.display = "none";
     document.getElementById("message").style.visibility = "visible";
     document.getElementById('message').innerHTML= "<p>Now, consider all the tokens with the same 'root' word to be of the same type. Recalculate the number of types</p>";
-    document.getElementById('continue').innerHTML = "#New types:";
+    document.getElementById('continue').innerHTML = "<p>#New types:</p>";
     document.getElementById('newInput').innerHTML = "<input id='newTypes' type=text size='4'>";
     document.getElementById('stemSubmit').style.visibility = "visible";
 }
