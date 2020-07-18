@@ -18,11 +18,13 @@ function languageSelection() {
         document.getElementById("message").style.visibility = "hidden";
         document.getElementById("sentanceSelection").innerHTML = '<select id="corpusEnglish" onchange="englishSelection()"><option value="null">---Select a Sentance---</option><option value="a">' + english1 + '</option><option value="b">' + english2 + '</option><option value="c">' + english3 + '</option><option value="d">' + english4 + '</option><option value="e">' + english5 + '</option></select>';
         document.getElementById("main").innerHTML = "";
+        document.getElementById("submitButton").innerHTML = "";
     }
     if (displaySelection == 'hindi') {
         document.getElementById("message").style.visibility = "hidden";
         document.getElementById("sentanceSelection").innerHTML = '<select id="corpusHindi" onchange="hindiSelection()"><option value="null">---Select a Sentance---</option><option value="a">' + hindi1 + '</option><option value="b">' + hindi2 + '</option><option value="c">' + hindi3 + '</option><option value="d">' + hindi4 + '</option><option value="e">' + hindi5 + '</option></select>';
         document.getElementById("main").innerHTML = "";
+        document.getElementById("submitButton").innerHTML = "";
     }
 }
 function englishSelection() {
@@ -63,8 +65,8 @@ function hindiSelection() {
         makeTableH(hindi5);
     }
 }
-var dropdownE = '<select id="selectPOS"><option value="noun">Noun</option><option value="pronoun">Pronoun</option><option value="conjunction">Conjunction</option><option value="interjection">Interjection</option><option value="verb">Verb</option><option value="determiner">Determiner</option><option value="adjective">Adjective</option><option value="adverb">Adverb</option><option value="preposition">Preposition</option></select>'
-var dropdownH = '<select id="selectPOS"><option value="noun">Noun</option><option value="pronoun">Pronoun</option><option value="conjunction">Conjunction</option><option value="interjection">Interjection</option><option value="verb">Verb</option><option value="determiner">Determiner</option><option value="adjective">Adjective</option><option value="adverb">Adverb</option><option value="postposition">Postposition</option></select>'
+var dropdownE = '<select id="selectPOS"><option value="noun" selected>Noun</option><option value="pronoun">Pronoun</option><option value="conjunction">Conjunction</option><option value="interjection">Interjection</option><option value="verb">Verb</option><option value="determiner">Determiner</option><option value="adjective">Adjective</option><option value="adverb">Adverb</option><option value="preposition">Preposition</option></select>'
+var dropdownH = '<select id="selectPOS"><option value="noun" selected>Noun</option><option value="pronoun">Pronoun</option><option value="conjunction">Conjunction</option><option value="interjection">Interjection</option><option value="verb">Verb</option><option value="determiner">Determiner</option><option value="adjective">Adjective</option><option value="adverb">Adverb</option><option value="postposition">Postposition</option></select>'
 function makeTableE(lang) {
     lang = lang.replace(/[^\w\s]|/g, "");
     arr = lang.split(" ");
@@ -72,6 +74,7 @@ function makeTableE(lang) {
     for (var i = 0; i < arr.length; i++) {
         document.getElementById("main").innerHTML += "<tr><td>" + arr[i] + "</td><td>"+ dropdownE + "</td><td></td><td></td></tr>";
     }
+    document.getElementById("submitButton").innerHTML = "<button>Submit</button>";
 }
 function makeTableH(lang) {
     arr = lang.split(" ");
@@ -79,4 +82,5 @@ function makeTableH(lang) {
     for (var i = 0; i < arr.length; i++) {
         document.getElementById("main").innerHTML += "<tr><td>" + arr[i] + "</td><td>"+ dropdownH +"</td><td></td><td></td></tr>";
     }
+    document.getElementById("submitButton").innerHTML = "<button>Submit</button>";
 }
