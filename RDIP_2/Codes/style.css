@@ -3,7 +3,7 @@
 }
 #message {
     font-style: italic;
-    color:blue;
+    color:white;
 }
 #table{
     display:inline-block;
@@ -12,5 +12,9 @@ table, tr, td {
     border: 1px solid black;
     border-collapse: collapse;
     padding: 5px;
-    text-align:center;
+    text-align: center;
+    color: white;
+}
+#wrap {
+    background-color:royalblue;
 }

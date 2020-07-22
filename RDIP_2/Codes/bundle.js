@@ -113,7 +113,7 @@ document.getElementById("message").style.visibility = "hidden";
     for (var i = 0; i < arr.length; i++) {
         document.getElementById("main").innerHTML += "<tr><td>" + arr[i] + "</td><td><select id='e" + i + "'><option value='NN' selected>Noun</option><option value='PRP'>Pronoun</option><option value='conjunction'>Conjunction</option><option value='UH'>Interjection</option><option value='VB'>Verb</option><option value='DT'>Determiner</option><option value='JJS'>Adjective</option><option value='RB'>Adverb</option><option value='IN'>Preposition</option></select></td><td id='img" + i + "'></td><td id='a" + i + "'></td></tr>";
     }
-        document.getElementById("submitButton").innerHTML = "<button  onclick='submitFunctionE()'>Submit</button>";
+        document.getElementById("submitButton").innerHTML = "<button class='btn btn - dark' onclick='submitFunctionE()'>Submit</button>";
 }
     window.submitFunctionE = function () {
         for (var i=0;i < taggedWords.length-1;i++) {
@@ -138,7 +138,7 @@ document.getElementById("message").style.visibility = "hidden";
             }
         }
         if (flag > 0) {
-            document.getElementById("getAnswers").innerHTML = "<button onclick='getAnswersE()'>Get Answers</button>";
+            document.getElementById("getAnswers").innerHTML = "<button class='btn btn - dark' onclick='getAnswersE()'>Get Answers</button>";
         }
     }
     
@@ -169,7 +169,7 @@ document.getElementById("message").style.visibility = "hidden";
                 document.getElementById("a" + i).innerHTML = "Adjective";
             }
         }
-        document.getElementById("hideAnswers").innerHTML ='<button onclick="hideE()">Hide Answers</button>';
+        document.getElementById("hideAnswers").innerHTML ='<button class="btn btn-dark" onclick="hideE()">Hide Answers</button>';
         document.getElementById("getAnswers").innerHTML = '';
     }
 
@@ -177,7 +177,7 @@ document.getElementById("message").style.visibility = "hidden";
         for (var i = 0; i < taggedWords.length - 1; i++) {
             document.getElementById("a" + i).innerHTML = "";
         }
-        document.getElementById("getAnswers").innerHTML = "<button onclick='getAnswersE()'>Get Answers</button>";
+        document.getElementById("getAnswers").innerHTML = "<button class='btn btn - dark' onclick='getAnswersE()'>Get Answers</button>";
         document.getElementById("hideAnswers").innerHTML = '';
     }
 
@@ -187,7 +187,7 @@ document.getElementById("message").style.visibility = "hidden";
     for (var i = 0; i < arr.length; i++) {
         document.getElementById("main").innerHTML += "<tr><td>" + arr[i] + "</td><td><select id='h" + i + "'><option value='NN' selected>Noun</option><option value='PRP'>Pronoun</option><option value='conjunction'>Conjunction</option><option value='UH'>Interjection</option><option value='VB'>Verb</option><option value='DT'>Determiner</option><option value='JJS'>Adjective</option><option value='RB'>Adverb</option><option value='IN'>Postposition</option></select></td><td id='imgh" + i + "'></td><td id='ansH" + i + "'></td></tr>";
     }
-    document.getElementById("submitButton").innerHTML = "<button onclick='submitFunctionH()'>Submit</button>";
+        document.getElementById("submitButton").innerHTML = "<button class='btn btn - dark' onclick='submitFunctionH()'>Submit</button>";
 }
 var H1 = ['NN','IN','NN','IN','IN','NN','VB'];
 var H2 = ['JJS','NN','NN','RB','VB'];
@@ -396,7 +396,7 @@ var H5 = ['NN','IN','NN','VB','VB'];
             }
         }
         if (flag > 0) {
-            document.getElementById("getAnswers").innerHTML = "<button onclick='getAnswersH()'>Get Answers</button>";
+            document.getElementById("getAnswers").innerHTML = "<button class='btn btn - dark' onclick='getAnswersH()'>Get Answers</button>";
         }
     }
 
@@ -438,7 +438,7 @@ var H5 = ['NN','IN','NN','VB','VB'];
             document.getElementById("ansH3").innerHTML = "Verb";
             document.getElementById("ansH4").innerHTML = "Verb";
         }
-        document.getElementById("hideAnswers").innerHTML = '<button onclick="hideH()">Hide Answers</button>';
+        document.getElementById("hideAnswers").innerHTML = '<button class="btn btn-dark" onclick="hideH()">Hide Answers</button>';
         document.getElementById("getAnswers").innerHTML = '';
     }
 
@@ -480,7 +480,7 @@ var H5 = ['NN','IN','NN','VB','VB'];
             document.getElementById("ansH3").innerHTML = "";
             document.getElementById("ansH4").innerHTML = "";
         }
-        document.getElementById("getAnswers").innerHTML = "<button onclick='getAnswersH()'>Get Answers</button>";
+        document.getElementById("getAnswers").innerHTML = "<button class='btn btn - dark' onclick='getAnswersH()'>Get Answers</button>";
         document.getElementById("hideAnswers").innerHTML = '';
     }
 
