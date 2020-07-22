@@ -20,6 +20,7 @@ document.getElementById("message").style.visibility = "hidden";
         document.getElementById("sentanceSelection").innerHTML = '<select id="corpusEnglish" onchange="englishSelection()"><option value="null">---Select a Sentance---</option><option value="a">' + english1 + '</option><option value="b">' + english2 + '</option><option value="c">' + english3 + '</option><option value="d">' + english4 + '</option><option value="e">' + english5 + '</option></select>';
         document.getElementById("main").innerHTML = "";
         document.getElementById("submitButton").innerHTML = "";
+        document.getElementById("getAnswers").innerHTML = "";
     }
     if (displaySelection == 'hindi') {
         document.getElementById("message").style.visibility = "hidden";
@@ -29,7 +30,9 @@ document.getElementById("message").style.visibility = "hidden";
     }
 }
     window.englishSelection = function() {
+    flag = 0;
     document.getElementById("message").style.visibility = "visible";
+    document.getElementById("getAnswers").innerHTML = "";
     var sentance = document.getElementById("corpusEnglish").value;
     if (sentance == 'a') {
         makeTableE(english1);
@@ -52,8 +55,11 @@ document.getElementById("message").style.visibility = "hidden";
    var flag3;
    var flag4;
    var flag5;
+   var flag;
     window.hindiSelection = function() {
+    flag = 0;
     document.getElementById("message").style.visibility = "visible";
+    document.getElementById("getAnswers").innerHTML = "";
     var sentance = document.getElementById("corpusHindi").value;
     if (sentance == 'a') {
         makeTableH(hindi1);
@@ -128,8 +134,12 @@ document.getElementById("message").style.visibility = "hidden";
             }
             if (document.getElementById("e" + i).value != tag) {
                 document.getElementById("img" + i).innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+                flag++;
             }
 
+        }
+        if (flag > 0) {
+            document.getElementById("getAnswers").innerHTML = "<button>Get Answers</button>";
         }
     }
     var a;
@@ -156,42 +166,49 @@ var H5 = ['NN','IN','NN','VB','VB'];
             } 
             if(document.getElementById("h0").value != H1[0]){
                 document.getElementById("imgh0").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+                flag++;
             }
             if(document.getElementById("h1").value == H1[1]){
                 document.getElementById("imgh1").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>"; 
             }
             if(document.getElementById("h1").value != H1[1]){ 
                 document.getElementById("imgh1").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+                flag++;
             } 
             if (document.getElementById("h2").value == H1[2]) {
                 document.getElementById("imgh2").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
             }
             if (document.getElementById("h2").value != H1[2]) {
                 document.getElementById("imgh2").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+                flag++;
             }
             if (document.getElementById("h3").value == H1[3]) {
                 document.getElementById("imgh3").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
             }
             if (document.getElementById("h3").value != H1[3]) {
                 document.getElementById("imgh3").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+                flag++;
             }
             if (document.getElementById("h4").value == H1[4]) {
                 document.getElementById("imgh4").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
             }
             if (document.getElementById("h4").value != H1[4]) {
                 document.getElementById("imgh4").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+                flag++;
             }
             if (document.getElementById("h5").value == H1[5]) {
                 document.getElementById("imgh5").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
             }
             if (document.getElementById("h5").value != H1[5]) {
                 document.getElementById("imgh5").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+                flag++;
             }
             if (document.getElementById("h6").value == H1[6]) {
                 document.getElementById("imgh6").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
             }
             if (document.getElementById("h6").value != H1[6]) {
                 document.getElementById("imgh6").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+                flag++;
             }
         }
         if (flag2 == 1) {
@@ -200,30 +217,35 @@ var H5 = ['NN','IN','NN','VB','VB'];
             }
             if (document.getElementById("h0").value != H2[0]) {
                 document.getElementById("imgh0").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+                flag++;
             }
             if (document.getElementById("h1").value == H2[1]) {
                 document.getElementById("imgh1").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
             }
             if (document.getElementById("h1").value != H2[1]) {
                 document.getElementById("imgh1").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+                flag++;
             }
             if (document.getElementById("h2").value == H2[2]) {
                 document.getElementById("imgh2").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
             }
             if (document.getElementById("h2").value != H2[2]) {
                 document.getElementById("imgh2").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+                flag++;
             }
             if (document.getElementById("h3").value == H2[3]) {
                 document.getElementById("imgh3").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
             }
             if (document.getElementById("h3").value != H2[3]) {
                 document.getElementById("imgh3").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+                flag++;
             }
             if (document.getElementById("h4").value == H2[4]) {
                 document.getElementById("imgh4").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
             }
             if (document.getElementById("h4").value != H2[4]) {
                 document.getElementById("imgh4").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+                flag++;
             }
         }
         if (flag3 == 1) {
@@ -232,36 +254,42 @@ var H5 = ['NN','IN','NN','VB','VB'];
             }
             if (document.getElementById("h0").value != H3[0]) {
                 document.getElementById("imgh0").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+                flag++;
             }
             if (document.getElementById("h1").value == H3[1]) {
                 document.getElementById("imgh1").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
             }
             if (document.getElementById("h1").value != H3[1]) {
                 document.getElementById("imgh1").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+                flag++;
             }
             if (document.getElementById("h2").value == H3[2]) {
                 document.getElementById("imgh2").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
             }
             if (document.getElementById("h2").value != H3[2]) {
                 document.getElementById("imgh2").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+                flag++;
             }
             if (document.getElementById("h3").value == H3[3]) {
                 document.getElementById("imgh3").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
             }
             if (document.getElementById("h3").value != H3[3]) {
                 document.getElementById("imgh3").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+                flag++;
             }
             if (document.getElementById("h4").value == H3[4]) {
                 document.getElementById("imgh4").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
             }
             if (document.getElementById("h4").value != H3[4]) {
                 document.getElementById("imgh4").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+                flag++;
             }
             if (document.getElementById("h5").value == H3[5]) {
                 document.getElementById("imgh5").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
             }
             if (document.getElementById("h5").value != H3[5]) {
                 document.getElementById("imgh5").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+                flag++;
             }
         }
         if (flag4 == 1) {
@@ -270,24 +298,28 @@ var H5 = ['NN','IN','NN','VB','VB'];
             }
             if (document.getElementById("h0").value != H4[0]) {
                 document.getElementById("imgh0").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+                flag++;
             }
             if (document.getElementById("h1").value == H4[1]) {
                 document.getElementById("imgh1").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
             }
             if (document.getElementById("h1").value != H4[1]) {
                 document.getElementById("imgh1").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+                flag++;
             }
             if (document.getElementById("h2").value == H4[2]) {
                 document.getElementById("imgh2").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
             }
             if (document.getElementById("h2").value != H4[2]) {
                 document.getElementById("imgh2").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+                flag++;
             }
             if (document.getElementById("h3").value == H4[3]) {
                 document.getElementById("imgh3").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
             }
             if (document.getElementById("h3").value != H4[3]) {
                 document.getElementById("imgh3").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+                flag++;
             }
         }
         if (flag5 == 1) {
@@ -296,31 +328,39 @@ var H5 = ['NN','IN','NN','VB','VB'];
             }
             if (document.getElementById("h0").value != H5[0]) {
                 document.getElementById("imgh0").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+                flag++;
             }
             if (document.getElementById("h1").value == H5[1]) {
                 document.getElementById("imgh1").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
             }
             if (document.getElementById("h1").value != H5[1]) {
                 document.getElementById("imgh1").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+                flag++;
             }
             if (document.getElementById("h2").value == H5[2]) {
                 document.getElementById("imgh2").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
             }
             if (document.getElementById("h2").value != H5[2]) {
                 document.getElementById("imgh2").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+                flag++;
             }
             if (document.getElementById("h3").value == H5[3]) {
                 document.getElementById("imgh3").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
             }
             if (document.getElementById("h3").value != H5[3]) {
                 document.getElementById("imgh3").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+                flag++;
             }
             if (document.getElementById("h4").value == H5[4]) {
                 document.getElementById("imgh4").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
             }
             if (document.getElementById("h4").value != H5[4]) {
                 document.getElementById("imgh4").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+                flag++;
             }
+        }
+        if (flag > 0) {
+            document.getElementById("getAnswers").innerHTML = "<button>Get Answers</button>";
         }
     }
 
