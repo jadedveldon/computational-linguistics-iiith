@@ -47,54 +47,290 @@ document.getElementById("message").style.visibility = "hidden";
         makeTableE(english5);
     }
 }
+   var flag1;
+   var flag2;
+   var flag3;
+   var flag4;
+   var flag5;
     window.hindiSelection = function() {
     document.getElementById("message").style.visibility = "visible";
     var sentance = document.getElementById("corpusHindi").value;
     if (sentance == 'a') {
         makeTableH(hindi1);
+        flag1 = 1; 
+        flag2 = 0;
+        flag3 = 0;
+        flag4 = 0;
+        flag5 = 0;
     }
     if (sentance == 'b') {
         makeTableH(hindi2);
+        flag1 = 0;
+        flag2 = 1;
+        flag3 = 0;
+        flag4 = 0;
+        flag5 = 0;
     }
     if (sentance == 'c') {
         makeTableH(hindi3);
+        flag1 = 0;
+        flag2 = 0;
+        flag3 = 1;
+        flag4 = 0;
+        flag5 = 0;
     }
     if (sentance == 'd') {
         makeTableH(hindi4);
+        flag1 = 0;
+        flag2 = 0;
+        flag3 = 0;
+        flag4 = 1;
+        flag5 = 0;
     }
     if (sentance == 'e') {
         makeTableH(hindi5);
+        flag1 = 0;
+        flag2 = 0;
+        flag3 = 0;
+        flag4 = 0;
+        flag5 = 1;
     }
 }
-var dropdownE = '<select id="selectPOS"><option value="noun" selected>Noun</option><option value="pronoun">Pronoun</option><option value="conjunction">Conjunction</option><option value="interjection">Interjection</option><option value="verb">Verb</option><option value="determiner">Determiner</option><option value="adjective">Adjective</option><option value="adverb">Adverb</option><option value="preposition">Preposition</option></select>'
-var dropdownH = '<select id="selectPOS"><option value="noun" selected>Noun</option><option value="pronoun">Pronoun</option><option value="conjunction">Conjunction</option><option value="interjection">Interjection</option><option value="verb">Verb</option><option value="determiner">Determiner</option><option value="adjective">Adjective</option><option value="adverb">Adverb</option><option value="postposition">Postposition</option></select>'
+  
     window.makeTableE = function(lang) {
+       words = new pos.Lexer().lex(lang);
+       tagger = new pos.Tagger();
+       taggedWords = tagger.tag(words);
     lang = lang.replace(/[^\w\s]|/g, "");
     arr = lang.split(" ");
     document.getElementById("main").innerHTML = "<tr><td>LEXICON</td><td>POS</td><td></td><td></td></tr>";
     for (var i = 0; i < arr.length; i++) {
-        document.getElementById("main").innerHTML += "<tr><td>" + arr[i] + "</td><td>"+ dropdownE + "</td><td></td><td></td></tr>";
+        document.getElementById("main").innerHTML += "<tr><td>" + arr[i] + "</td><td><select id='e" + i + "'><option value='NN' selected>Noun</option><option value='PRP'>Pronoun</option><option value='conjunction'>Conjunction</option><option value='UH'>Interjection</option><option value='VB'>Verb</option><option value='DT'>Determiner</option><option value='JJS'>Adjective</option><option value='RB'>Adverb</option><option value='IN'>Preposition</option></select></td><td id='img" + i + "'></td><td></td></tr>";
     }
-    document.getElementById("submitButton").innerHTML = "<button>Submit</button>";
+        document.getElementById("submitButton").innerHTML = "<button  onclick='submitFunctionE()'>Submit</button>";
 }
+    window.submitFunctionE = function () {
+        for (var i=0;i < taggedWords.length-1;i++) {
+            taggedWord = taggedWords[i];
+            word = taggedWord[0];
+            tag = taggedWord[1];
+            if (tag == 'NNP' || tag == 'NNS') {
+                tag = 'NN';
+            }
+            if (tag == 'VBT' || tag == 'VBD' || tag == 'JJ' || tag == 'VBN') {
+                tag = 'VB';
+            }
+            if (tag == 'PRP$') {
+                tag = 'DT';
+            }
+            if (document.getElementById("e" + i).value == tag){
+                document.getElementById("img" + i).innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("e" + i).value != tag) {
+                document.getElementById("img" + i).innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+            }
+
+        }
+    }
+    var a;
+    var z;
     window.makeTableH = function(lang) {
+    z = parseInt(arguments[1]);
     arr = lang.split(" ");
     document.getElementById("main").innerHTML = "<tr><td>LEXICON</td><td>POS</td><td></td><td></td></tr>";
     for (var i = 0; i < arr.length; i++) {
-        document.getElementById("main").innerHTML += "<tr><td>" + arr[i] + "</td><td>"+ dropdownH +"</td><td></td><td></td></tr>";
+        document.getElementById("main").innerHTML += "<tr><td>" + arr[i] + "</td><td><select id='h" + i + "'><option value='NN' selected>Noun</option><option value='PRP'>Pronoun</option><option value='conjunction'>Conjunction</option><option value='UH'>Interjection</option><option value='VB'>Verb</option><option value='DT'>Determiner</option><option value='JJS'>Adjective</option><option value='RB'>Adverb</option><option value='IN'>Postposition</option></select></td><td id='imgh" + i + "'></td><td></td></tr>";
     }
-    document.getElementById("submitButton").innerHTML = "<button>Submit</button>";
+    document.getElementById("submitButton").innerHTML = "<button onclick='submitFunctionH()'>Submit</button>";
 }
+var H1 = ['NN','IN','NN','IN','IN','NN','VB'];
+var H2 = ['JJS','NN','NN','RB','VB'];
+var H3 = ['NN','IN','NN','JJS','VB','VB'];
+var H4 = ['UH','PRP','JJS','VB'];
+var H5 = ['NN','IN','NN','VB','VB'];
+
+    window.submitFunctionH = function () {
+        if(flag1 == 1){
+            if(document.getElementById("h0").value == H1[0]){
+                document.getElementById("imgh0").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
+            } 
+            if(document.getElementById("h0").value != H1[0]){
+                document.getElementById("imgh0").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+            }
+            if(document.getElementById("h1").value == H1[1]){
+                document.getElementById("imgh1").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>"; 
+            }
+            if(document.getElementById("h1").value != H1[1]){ 
+                document.getElementById("imgh1").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+            } 
+            if (document.getElementById("h2").value == H1[2]) {
+                document.getElementById("imgh2").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h2").value != H1[2]) {
+                document.getElementById("imgh2").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h3").value == H1[3]) {
+                document.getElementById("imgh3").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h3").value != H1[3]) {
+                document.getElementById("imgh3").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h4").value == H1[4]) {
+                document.getElementById("imgh4").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h4").value != H1[4]) {
+                document.getElementById("imgh4").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h5").value == H1[5]) {
+                document.getElementById("imgh5").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h5").value != H1[5]) {
+                document.getElementById("imgh5").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h6").value == H1[6]) {
+                document.getElementById("imgh6").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h6").value != H1[6]) {
+                document.getElementById("imgh6").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+            }
+        }
+        if (flag2 == 1) {
+            if (document.getElementById("h0").value == H2[0]) {
+                document.getElementById("imgh0").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h0").value != H2[0]) {
+                document.getElementById("imgh0").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h1").value == H2[1]) {
+                document.getElementById("imgh1").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h1").value != H2[1]) {
+                document.getElementById("imgh1").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h2").value == H2[2]) {
+                document.getElementById("imgh2").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h2").value != H2[2]) {
+                document.getElementById("imgh2").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h3").value == H2[3]) {
+                document.getElementById("imgh3").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h3").value != H2[3]) {
+                document.getElementById("imgh3").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h4").value == H2[4]) {
+                document.getElementById("imgh4").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h4").value != H2[4]) {
+                document.getElementById("imgh4").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+            }
+        }
+        if (flag3 == 1) {
+            if (document.getElementById("h0").value == H3[0]) {
+                document.getElementById("imgh0").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h0").value != H3[0]) {
+                document.getElementById("imgh0").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h1").value == H3[1]) {
+                document.getElementById("imgh1").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h1").value != H3[1]) {
+                document.getElementById("imgh1").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h2").value == H3[2]) {
+                document.getElementById("imgh2").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h2").value != H3[2]) {
+                document.getElementById("imgh2").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h3").value == H3[3]) {
+                document.getElementById("imgh3").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h3").value != H3[3]) {
+                document.getElementById("imgh3").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h4").value == H3[4]) {
+                document.getElementById("imgh4").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h4").value != H3[4]) {
+                document.getElementById("imgh4").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h5").value == H3[5]) {
+                document.getElementById("imgh5").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h5").value != H3[5]) {
+                document.getElementById("imgh5").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+            }
+        }
+        if (flag4 == 1) {
+            if (document.getElementById("h0").value == H4[0]) {
+                document.getElementById("imgh0").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h0").value != H4[0]) {
+                document.getElementById("imgh0").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h1").value == H4[1]) {
+                document.getElementById("imgh1").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h1").value != H4[1]) {
+                document.getElementById("imgh1").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h2").value == H4[2]) {
+                document.getElementById("imgh2").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h2").value != H4[2]) {
+                document.getElementById("imgh2").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h3").value == H4[3]) {
+                document.getElementById("imgh3").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h3").value != H4[3]) {
+                document.getElementById("imgh3").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+            }
+        }
+        if (flag5 == 1) {
+            if (document.getElementById("h0").value == H5[0]) {
+                document.getElementById("imgh0").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h0").value != H5[0]) {
+                document.getElementById("imgh0").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h1").value == H5[1]) {
+                document.getElementById("imgh1").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h1").value != H5[1]) {
+                document.getElementById("imgh1").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h2").value == H5[2]) {
+                document.getElementById("imgh2").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h2").value != H5[2]) {
+                document.getElementById("imgh2").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h3").value == H5[3]) {
+                document.getElementById("imgh3").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h3").value != H5[3]) {
+                document.getElementById("imgh3").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h4").value == H5[4]) {
+                document.getElementById("imgh4").innerHTML = "<img src='right.png' style='height: 25px; width: 25px'>";
+            }
+            if (document.getElementById("h4").value != H5[4]) {
+                document.getElementById("imgh4").innerHTML = "<img src='wrong.png' style='height: 25px; width: 25px'>";
+            }
+        }
+    }
+
 var pos = require('pos');
-var words = new pos.Lexer().lex('I ate an apple.'); //You have to enter the sentences here
-var tagger = new pos.Tagger();
-var taggedWords = tagger.tag(words);
-for (i in taggedWords) {
-    var taggedWord = taggedWords[i];
-    var word = taggedWord[0];
-    var tag = taggedWord[1];
-    console.log(word + " /" + tag);
-}
+var words;
+var tagger;
+var taggedWords;
+var taggedWord;
+var word;
+var tag;
 },{"pos":4}],2:[function(require,module,exports){
 /*
   Transformation rules for Brill's POS tagger
